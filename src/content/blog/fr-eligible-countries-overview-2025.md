@@ -1,44 +1,35 @@
 ---
-title: "Transit sans visa de 240 heures et entree unilaterale sans visa en Chine : apercu des pays eligibles (2025)"
-description: "Un apercu complet des 54 pays eligibles aux programmes d'entree sans visa en Chine en 2025, incluant l'entree unilaterale sans visa et le permis de transit de 240 heures."
-pubDate: 2025-01-20
+title: "Transit sans visa de 240 heures et entrée unilatérale sans visa en Chine : aperçu des pays éligibles (2025)"
+description: "Un aperçu complet des 54 pays éligibles aux programmes d'entrée sans visa en Chine en 2025, incluant l'entrée unilatérale sans visa et le permis de transit de 240 heures."
+pubDate: 2025-02-11
 tags: ["visa-free", "eligible-countries", "policy", "2025"]
 lang: "fr"
 ---
 
-La Chine propose deux voies d'entree sans visa, couvrant un total de 54 pays. Voici un apercu complet des pays eligibles et du programme dont ils relevent.
+## Tableau 1 : 42 pays bénéficiant de l'entrée sans visa en Chine jusqu'à fin 2025
 
-## Tableau 1 : 42 pays beneficiant de l'entree unilaterale sans visa (jusqu'a fin 2025)
-
-Les ressortissants de ces 42 pays beneficient d'une entree unilaterale sans visa en Chine jusqu'a la fin de l'annee 2025 et n'ont pas besoin de demander un visa.
-
-| Region | Pays |
+| Région | Pays |
 |--------|------|
-| Espace Schengen (21) | 🇦🇹 Autriche, 🇧🇪 Belgique, 🇩🇰 Danemark, 🇪🇪 Estonie, 🇫🇮 Finlande, 🇫🇷 France, 🇩🇪 Allemagne, 🇬🇷 Grece, 🇭🇺 Hongrie, 🇮🇸 Islande, 🇮🇹 Italie, 🇱🇻 Lettonie, 🇱🇹 Lituanie, 🇱🇺 Luxembourg, 🇲🇹 Malte, 🇳🇱 Pays-Bas, 🇵🇱 Pologne, 🇵🇹 Portugal, 🇸🇰 Slovaquie, 🇸🇮 Slovenie, 🇪🇸 Espagne |
-| Autres pays europeens (9) | 🇨🇾 Chypre, 🇧🇬 Bulgarie, 🇷🇴 Roumanie, 🇷🇸 Serbie, 🇭🇷 Croatie, 🇧🇦 Bosnie-Herzegovine, 🇲🇪 Montenegro, 🇲🇰 Macedoine du Nord, 🇦🇱 Albanie |
-| Ameriques (1) | 🇨🇱 Chili |
-| Oceanie (2) | 🇦🇺 Australie, 🇳🇿 Nouvelle-Zelande |
-| Asie (6) | 🇰🇷 Coree du Sud, 🇯🇵 Japon, 🇸🇬 Singapour, 🇧🇳 Brunei, 🇦🇪 Emirats arabes unis, 🇶🇦 Qatar |
+| Espace Schengen (21) | 🇦🇹 Autriche, 🇧🇪 Belgique, 🇩🇰 Danemark, 🇪🇪 Estonie, 🇫🇮 Finlande, 🇫🇷 France, 🇩🇪 Allemagne, 🇬🇷 Grèce, 🇭🇺 Hongrie, 🇮🇸 Islande, 🇮🇹 Italie, 🇱🇻 Lettonie, 🇱🇹 Lituanie, 🇱🇺 Luxembourg, 🇲🇹 Malte, 🇳🇱 Pays-Bas, 🇵🇱 Pologne, 🇵🇹 Portugal, 🇸🇰 Slovaquie, 🇸🇮 Slovénie, 🇪🇸 Espagne |
+| Autres pays européens (9) | 🇨🇾 Chypre, 🇧🇬 Bulgarie, 🇷🇴 Roumanie, 🇷🇸 Serbie, 🇭🇷 Croatie, 🇧🇦 Bosnie-Herzégovine, 🇲🇪 Monténégro, 🇲🇰 Macédoine du Nord, 🇦🇱 Albanie |
+| Amériques (2) | 🇨🇱 Chili |
+| Océanie (2) | 🇦🇺 Australie, 🇳🇿 Nouvelle-Zélande |
+| Asie (6) | 🇰🇷 Corée du Sud, 🇯🇵 Japon, 🇸🇬 Singapour, 🇧🇳 Brunei, 🇦🇪 Émirats arabes unis, 🇶🇦 Qatar |
 
----
+## Tableau 2 : 12 pays nécessitant un permis de transit sans visa de 240 heures
 
-## Tableau 2 : 12 pays eligibles au permis de transit sans visa de 240 heures
-
-Les ressortissants de ces 12 pays peuvent demander le permis de transit sans visa de 240 heures lorsqu'ils transitent par la Chine vers un pays tiers.
-
-| Region | Pays |
+| Région | Pays |
 |--------|------|
-| Espace Schengen (3) | 🇨🇿 Republique tcheque, 🇸🇪 Suede, 🇨🇭 Suisse |
-| Autres pays europeens (3) | 🇬🇧 Royaume-Uni, 🇷🇺 Russie, 🇺🇦 Ukraine |
-| Ameriques (6) | 🇺🇸 Etats-Unis, 🇨🇦 Canada, 🇧🇷 Bresil, 🇲🇽 Mexique, 🇦🇷 Argentine, 🇨🇱 Chili |
+| Espace Schengen (3) | 🇨🇿 République tchèque, 🇸🇪 Suède, 🇱🇹 Lituanie |
+| Autres pays européens (3) | 🇬🇧 Royaume-Uni, 🇷🇺 Russie, 🇺🇦 Ukraine |
+| Amériques (6) | 🇺🇸 États-Unis, 🇨🇦 Canada, 🇧🇷 Brésil, 🇲🇽 Mexique, 🇦🇷 Argentine, 🇨🇱 Chili |
 
----
+## Notes :
 
-## Points cles
+- Les ressortissants des 42 pays du Tableau 1 bénéficient d'une entrée unilatérale sans visa en Chine jusqu'à fin 2025 et n'ont pas besoin de demander un visa.
 
-1. **Entree unilaterale sans visa (Tableau 1) :** Aucun visa requis. Reservez simplement votre vol et partez.
-2. **Transit de 240 heures (Tableau 2) :** Vous devez transiter par la Chine vers un pays tiers. Demandez le permis au point d'entree.
-3. **Non repertorie ?** Les ressortissants de pays ne figurant pas parmi ces 54 nations ne sont actuellement pas eligibles aux avantages du transit sans visa.
-4. **Points d'entree :** Les voyageurs eligibles peuvent entrer par 60 points d'entree designes a travers le pays. Consultez notre [guide des points d'entree](/blog/fr-entry-ports-iata-codes/) pour la liste complete.
+- Les ressortissants des 12 pays du Tableau 2 doivent encore demander le permis de transit sans visa de 240 heures.
 
-> **Remarque :** La politique d'entree unilaterale sans visa pour les 42 pays est actuellement prevue jusqu'a la fin de l'annee 2025. Consultez les sources officielles pour les dernieres mises a jour.
+- Les ressortissants de pays non inclus dans ces 54 ne sont pas éligibles au permis de transit sans visa de 240 heures.
+
+**Points d'entrée :** Suite à la dernière vague d'expansion des ports, le nombre de points d'entrée pour le transit sans visa est passé de 39 à 60 ports. Consultez notre [guide des points d'entrée](/blog/fr-entry-ports-iata-codes/) pour la liste complète.
