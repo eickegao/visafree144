@@ -1,7 +1,7 @@
 ---
-title: "Le nouveau transit sans visa de 10 jours en Chine : une revolution pour les voyageurs"
+title: "✈ Le nouveau transit sans visa de 10 jours en Chine : une revolution pour les voyageurs 🏮"
 description: "La Chine a elargi sa politique de transit sans visa de 144 heures a 240 heures (10 jours), avec davantage d'aeroports et de provinces desormais inclus."
-pubDate: 2025-01-15
+pubDate: 2025-02-08
 tags: ["visa-free", "transit", "policy", "travel"]
 lang: "fr"
 ---
@@ -10,8 +10,8 @@ La Chine a considerablement elargi son programme de transit sans visa, et les ch
 
 ## Principaux changements de la politique
 
-| Aspect | Avant | Maintenant |
-|--------|-------|------------|
+| Caracteristique | Avant | Maintenant |
+|-----------------|-------|------------|
 | Sejour sans visa | 72 ou 144 heures | 240 heures (10 jours !) |
 | Pays eligibles | 54 pays | 54 pays (plus d'avantages) |
 | Points d'entree | 39 aeroports designes | 60 aeroports |

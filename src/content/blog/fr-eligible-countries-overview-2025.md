@@ -12,25 +12,13 @@ La Chine propose deux voies d'entree sans visa, couvrant un total de 54 pays. Vo
 
 Les ressortissants de ces 42 pays beneficient d'une entree unilaterale sans visa en Chine jusqu'a la fin de l'annee 2025 et n'ont pas besoin de demander un visa.
 
-### Espace Schengen (21 pays)
-
-Autriche, Belgique, Danemark, Estonie, Finlande, France, Allemagne, Grece, Hongrie, Islande, Italie, Lettonie, Lituanie, Luxembourg, Malte, Pays-Bas, Pologne, Portugal, Slovaquie, Slovenie, Espagne
-
-### Autres pays europeens (9)
-
-Chypre, Bulgarie, Roumanie, Serbie, Croatie, Bosnie-Herzegovine, Montenegro, Macedoine du Nord, Albanie
-
-### Ameriques (1)
-
-Chili
-
-### Oceanie (2)
-
-Australie, Nouvelle-Zelande
-
-### Asie (6)
-
-Coree du Sud, Japon, Singapour, Brunei, Emirats arabes unis, Qatar
+| Region | Pays |
+|--------|------|
+| Espace Schengen (21) | 🇦🇹 Autriche, 🇧🇪 Belgique, 🇩🇰 Danemark, 🇪🇪 Estonie, 🇫🇮 Finlande, 🇫🇷 France, 🇩🇪 Allemagne, 🇬🇷 Grece, 🇭🇺 Hongrie, 🇮🇸 Islande, 🇮🇹 Italie, 🇱🇻 Lettonie, 🇱🇹 Lituanie, 🇱🇺 Luxembourg, 🇲🇹 Malte, 🇳🇱 Pays-Bas, 🇵🇱 Pologne, 🇵🇹 Portugal, 🇸🇰 Slovaquie, 🇸🇮 Slovenie, 🇪🇸 Espagne |
+| Autres pays europeens (9) | 🇨🇾 Chypre, 🇧🇬 Bulgarie, 🇷🇴 Roumanie, 🇷🇸 Serbie, 🇭🇷 Croatie, 🇧🇦 Bosnie-Herzegovine, 🇲🇪 Montenegro, 🇲🇰 Macedoine du Nord, 🇦🇱 Albanie |
+| Ameriques (1) | 🇨🇱 Chili |
+| Oceanie (2) | 🇦🇺 Australie, 🇳🇿 Nouvelle-Zelande |
+| Asie (6) | 🇰🇷 Coree du Sud, 🇯🇵 Japon, 🇸🇬 Singapour, 🇧🇳 Brunei, 🇦🇪 Emirats arabes unis, 🇶🇦 Qatar |
 
 ---
 
@@ -38,17 +26,11 @@ Coree du Sud, Japon, Singapour, Brunei, Emirats arabes unis, Qatar
 
 Les ressortissants de ces 12 pays peuvent demander le permis de transit sans visa de 240 heures lorsqu'ils transitent par la Chine vers un pays tiers.
 
-### Espace Schengen (3)
-
-Republique tcheque, Suede, Suisse
-
-### Autres pays europeens (3)
-
-Royaume-Uni, Russie, Ukraine
-
-### Ameriques (6)
-
-Etats-Unis, Canada, Bresil, Mexique, Argentine, Chili
+| Region | Pays |
+|--------|------|
+| Espace Schengen (3) | 🇨🇿 Republique tcheque, 🇸🇪 Suede, 🇨🇭 Suisse |
+| Autres pays europeens (3) | 🇬🇧 Royaume-Uni, 🇷🇺 Russie, 🇺🇦 Ukraine |
+| Ameriques (6) | 🇺🇸 Etats-Unis, 🇨🇦 Canada, 🇧🇷 Bresil, 🇲🇽 Mexique, 🇦🇷 Argentine, 🇨🇱 Chili |
 
 ---
 

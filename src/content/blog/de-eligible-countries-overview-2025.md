@@ -12,25 +12,13 @@ China bietet zwei Wege zur visumfreien Einreise, die insgesamt 54 Länder abdeck
 
 Staatsangehörige dieser 42 Länder haben bis Ende 2025 eine einseitige Visumbefreiung für China erhalten und müssen kein Visum beantragen.
 
-### Schengen-Raum (21 Länder)
-
-Belgien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, Österreich, Polen, Portugal, Slowakei, Slowenien, Spanien, Ungarn
-
-### Weitere europäische Länder (9)
-
-Albanien, Bosnien und Herzegowina, Bulgarien, Kroatien, Montenegro, Nordmazedonien, Rumänien, Serbien, Zypern
-
-### Amerika (1)
-
-Chile
-
-### Ozeanien (2)
-
-Australien, Neuseeland
-
-### Asien (6)
-
-Brunei, Japan, Katar, Singapur, Südkorea, Vereinigte Arabische Emirate
+| Region | Länder |
+|--------|--------|
+| Schengen-Raum (21) | 🇦🇹 Österreich, 🇧🇪 Belgien, 🇩🇰 Dänemark, 🇪🇪 Estland, 🇫🇮 Finnland, 🇫🇷 Frankreich, 🇩🇪 Deutschland, 🇬🇷 Griechenland, 🇭🇺 Ungarn, 🇮🇸 Island, 🇮🇹 Italien, 🇱🇻 Lettland, 🇱🇹 Litauen, 🇱🇺 Luxemburg, 🇲🇹 Malta, 🇳🇱 Niederlande, 🇵🇱 Polen, 🇵🇹 Portugal, 🇸🇰 Slowakei, 🇸🇮 Slowenien, 🇪🇸 Spanien |
+| Weitere europäische Länder (9) | 🇨🇾 Zypern, 🇧🇬 Bulgarien, 🇷🇴 Rumänien, 🇷🇸 Serbien, 🇭🇷 Kroatien, 🇧🇦 Bosnien und Herzegowina, 🇲🇪 Montenegro, 🇲🇰 Nordmazedonien, 🇦🇱 Albanien |
+| Amerika (1) | 🇨🇱 Chile |
+| Ozeanien (2) | 🇦🇺 Australien, 🇳🇿 Neuseeland |
+| Asien (6) | 🇰🇷 Südkorea, 🇯🇵 Japan, 🇸🇬 Singapur, 🇧🇳 Brunei, 🇦🇪 Vereinigte Arabische Emirate, 🇶🇦 Katar |
 
 ---
 
@@ -38,17 +26,11 @@ Brunei, Japan, Katar, Singapur, Südkorea, Vereinigte Arabische Emirate
 
 Staatsangehörige dieser 12 Länder können bei der Durchreise durch China in ein Drittland die visumfreie 240-Stunden-Transitgenehmigung beantragen.
 
-### Schengen-Raum (3)
-
-Schweden, Schweiz, Tschechische Republik
-
-### Weitere europäische Länder (3)
-
-Großbritannien, Russland, Ukraine
-
-### Amerika (6)
-
-Argentinien, Brasilien, Chile, Kanada, Mexiko, Vereinigte Staaten
+| Region | Länder |
+|--------|--------|
+| Schengen-Raum (3) | 🇨🇿 Tschechische Republik, 🇸🇪 Schweden, 🇨🇭 Schweiz |
+| Weitere europäische Länder (3) | 🇬🇧 Großbritannien, 🇷🇺 Russland, 🇺🇦 Ukraine |
+| Amerika (6) | 🇺🇸 Vereinigte Staaten, 🇨🇦 Kanada, 🇧🇷 Brasilien, 🇲🇽 Mexiko, 🇦🇷 Argentinien, 🇨🇱 Chile |
 
 ---
 

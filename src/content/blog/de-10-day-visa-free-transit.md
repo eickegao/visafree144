@@ -1,7 +1,7 @@
 ---
-title: "Chinas neues 10-Tage-Visumsfreies-Transit: Ein Meilenstein für Reisende"
+title: "✈ Chinas neues 10-Tage-Visumsfreies-Transit: Ein Meilenstein für Reisende 🏮"
 description: "China hat seine visumfreie Transitregelung von 144 Stunden auf 240 Stunden (10 Tage) erweitert, mit mehr Flughäfen und Provinzen."
-pubDate: 2025-01-15
+pubDate: 2025-02-08
 tags: ["visa-free", "transit", "policy", "travel"]
 lang: "de"
 ---
@@ -10,8 +10,8 @@ China hat sein visumfreies Transitprogramm erheblich ausgeweitet, und die Änder
 
 ## Wichtigste Änderungen
 
-| Aspekt | Vorher | Aktuell |
-|--------|--------|---------|
+| Merkmal | Vorher | Jetzt |
+|---------|--------|-------|
 | Visumfreier Aufenthalt | 72 oder 144 Stunden | 240 Stunden (10 Tage!) |
 | Berechtigte Länder | 54 Länder | 54 Länder (mehr Vorteile) |
 | Einreisepunkte | 39 ausgewiesene Flughäfen | 60 Flughäfen |
