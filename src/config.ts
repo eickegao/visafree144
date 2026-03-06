@@ -8,8 +8,8 @@ export const SITE = {
     en: "Your site description here",
     zh: "在这里填写网站描述",
   },
-  url: "https://visafree144.com",
-  base: "",
+  url: "https://eickegao.github.io/visafree144",
+  base: "/visafree144",
   defaultLang: "zh" as const,
   supportedLangs: ["en", "zh"] as const,
 

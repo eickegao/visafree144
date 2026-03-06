@@ -9,7 +9,7 @@ const socials = Object.entries(SITE.socials).filter(([_, url]) => url);
 
 <BaseLayout title={t(lang, "about.title")} lang={lang}>
   <section class="about">
-    <img src={SITE.author.avatar} alt={SITE.author.name[lang]} class="avatar" onerror="this.style.display='none'" />
+    <img src={`${SITE.base}${SITE.author.avatar}`} alt={SITE.author.name[lang]} class="avatar" onerror="this.style.display='none'" />
     <h1>{SITE.author.name[lang]}</h1>
 
     <p class="bio">{SITE.author.bio[lang]}</p>

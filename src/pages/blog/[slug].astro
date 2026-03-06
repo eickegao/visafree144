@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AdSlot from "../../components/AdSlot.astro";
-import { t } from "../../i18n";
+import { t, getLocalizedPath } from "../../i18n";
 import { formatDate, getReadingTime } from "../../utils/blog";
 
 export async function getStaticPaths() {
@@ -22,7 +22,7 @@ const readingTime = post.body ? getReadingTime(post.body) : undefined;
 
 <BaseLayout title={post.data.title} description={post.data.description} lang={lang} image={post.data.image} article={{ pubDate: post.data.pubDate, updatedDate: post.data.updatedDate, tags: post.data.tags }}>
   <article>
-    <a href="/blog/" class="back">&larr; {t(lang, "blog.backToBlog")}</a>
+    <a href={getLocalizedPath("/blog/", lang)} class="back">&larr; {t(lang, "blog.backToBlog")}</a>
     <h1>{post.data.title}</h1>
     <div class="meta">
       <time>{formatDate(post.data.pubDate, lang)}</time>
@@ -31,7 +31,7 @@ const readingTime = post.body ? getReadingTime(post.body) : undefined;
     {post.data.tags.length > 0 && (
       <div class="tags">
         {post.data.tags.map((tag: string) => (
-          <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+          <a href={getLocalizedPath(`/tags/${tag}/`, lang)} class="tag">#{tag}</a>
         ))}
       </div>
     )}
