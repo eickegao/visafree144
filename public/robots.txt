@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://visafree144.com/sitemap-index.xml
