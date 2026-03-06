@@ -1,6 +1,6 @@
 ---
 import { SITE, type Lang } from "../config";
-import { t, getSwitchLangPath, getLocalizedPath } from "../i18n";
+import { t, getLocalizedPath, getLangPath, langNames } from "../i18n";
 
 interface Props {
   lang: Lang;
@@ -8,7 +8,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const nav = SITE.nav[lang];
-const switchPath = getSwitchLangPath(Astro.url.pathname, lang);
+const otherLangs = SITE.supportedLangs.filter((l) => l !== lang);
 ---
 
 <header>
@@ -19,14 +19,21 @@ const switchPath = getSwitchLangPath(Astro.url.pathname, lang);
     </a>
     <nav>
       {nav.map((item) => {
-        const href = `${SITE.base}${item.href}`;
+        const href = `${SITE.base}${lang === SITE.defaultLang ? "" : `/${lang}`}${item.href}`;
         return (
           <a href={href} class:list={[{ active: Astro.url.pathname === href }]}>
             {item.text}
           </a>
         );
       })}
-      <a href={switchPath} class="lang-switch">{t(lang, "lang.switch")}</a>
+      <div class="lang-switcher">
+        <button class="lang-btn" aria-label="Switch language">{langNames[lang]}</button>
+        <div class="lang-dropdown">
+          {otherLangs.map((l) => (
+            <a href={getLangPath(Astro.url.pathname, lang, l)}>{langNames[l]}</a>
+          ))}
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -84,15 +91,54 @@ const switchPath = getSwitchLangPath(Astro.url.pathname, lang);
     color: var(--primary);
   }
 
-  .lang-switch {
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-btn {
     padding: 0.25rem 0.75rem;
     border: 1px solid #e2e8f0;
     border-radius: 4px;
     font-size: 0.85rem;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
   }
 
-  .lang-switch:hover {
+  .lang-btn:hover {
     border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.25rem;
+    background: var(--bg);
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    min-width: 120px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 200;
+  }
+
+  .lang-switcher:hover .lang-dropdown {
+    display: block;
+  }
+
+  .lang-dropdown a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    color: #64748b;
+    white-space: nowrap;
+  }
+
+  .lang-dropdown a:hover {
+    background: var(--card-bg);
+    color: var(--primary);
   }
 
   @media (max-width: 640px) {

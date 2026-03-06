@@ -7,7 +7,7 @@ import { t, getLocalizedPath } from "../../../i18n";
 import { formatDate, getReadingTime } from "../../../utils/blog";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => data.lang === "en");
+  const posts = await getCollection("blog", ({ data }) => data.lang === "fr");
   return posts.map((post) => ({
     params: { slug: post.id },
     props: post,
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
 const post = Astro.props;
 const { Content } = await render(post);
-const lang = "en";
+const lang = "fr";
 const readingTime = post.body ? getReadingTime(post.body) : undefined;
 ---
 
@@ -35,49 +35,18 @@ const readingTime = post.body ? getReadingTime(post.body) : undefined;
         ))}
       </div>
     )}
-
     <AdSlot slot="top" />
-
     <div class="prose">
       <Content />
     </div>
-
     <AdSlot slot="bottom" />
   </article>
 </BaseLayout>
 
 <style>
-  .back {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: #64748b;
-    font-size: 0.9rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-
-  .meta {
-    color: #64748b;
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .tags {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    font-size: 0.8rem;
-    color: var(--primary);
-    background: var(--card-bg);
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-  }
+  .back { display: inline-block; margin-bottom: 1.5rem; color: #64748b; font-size: 0.9rem; }
+  h1 { font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.3; }
+  .meta { color: #64748b; font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .tags { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .tag { font-size: 0.8rem; color: var(--primary); background: var(--card-bg); padding: 0.15rem 0.5rem; border-radius: 4px; }
 </style>

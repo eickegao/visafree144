@@ -1,5 +1,6 @@
 ---
 import { SITE, type Lang } from "../config";
+import { getLangPath } from "../i18n";
 
 interface Props {
   title: string;
@@ -17,29 +18,32 @@ const { title, description, lang, image, article } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 const ogImage = image ? new URL(image, SITE.url).href : undefined;
 
-// Alternate language URL
-const currentPath = Astro.url.pathname;
-const altLang = lang === "zh" ? "en" : "zh";
-const altPath = lang === SITE.defaultLang
-  ? `/${altLang}${currentPath}`
-  : currentPath.replace(`/${lang}`, "") || "/";
-const altURL = new URL(altPath, SITE.url).href;
+const localeMap: Record<Lang, string> = {
+  en: "en_US",
+  es: "es_ES",
+  de: "de_DE",
+  fr: "fr_FR",
+  ja: "ja_JP",
+  ko: "ko_KR",
+};
 ---
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL.href} />
 
 <!-- Alternate languages -->
-<link rel="alternate" hreflang={lang} href={canonicalURL.href} />
-<link rel="alternate" hreflang={altLang} href={altURL} />
-<link rel="alternate" hreflang="x-default" href={new URL("/", SITE.url).href} />
+{SITE.supportedLangs.map((l) => {
+  const altURL = new URL(getLangPath(Astro.url.pathname, lang, l), SITE.url).href;
+  return <link rel="alternate" hreflang={l} href={altURL} />;
+})}
+<link rel="alternate" hreflang="x-default" href={new URL(SITE.base || "/", SITE.url).href} />
 
 <!-- Open Graph -->
 <meta property="og:type" content={article ? "article" : "website"} />
 <meta property="og:url" content={canonicalURL.href} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:locale" content={lang === "zh" ? "zh_CN" : "en_US"} />
+<meta property="og:locale" content={localeMap[lang]} />
 <meta property="og:site_name" content={SITE.title[lang]} />
 {ogImage && <meta property="og:image" content={ogImage} />}
 
@@ -79,7 +83,7 @@ const altURL = new URL(altPath, SITE.url).href;
       url: SITE.url,
     },
     mainEntityOfPage: canonicalURL.href,
-    inLanguage: lang === "zh" ? "zh-CN" : "en-US",
+    inLanguage: localeMap[lang].replace("_", "-"),
     ...(ogImage ? { image: ogImage } : {}),
     keywords: article.tags?.join(", "),
   })} />
@@ -94,9 +98,9 @@ const altURL = new URL(altPath, SITE.url).href;
       "@type": "Person",
       name: SITE.author.name[lang],
     },
-    inLanguage: lang === "zh" ? "zh-CN" : "en-US",
+    inLanguage: localeMap[lang].replace("_", "-"),
   })} />
 )}
 
 <!-- RSS Feed -->
-<link rel="alternate" type="application/rss+xml" title={SITE.title[lang]} href={new URL("/rss.xml", SITE.url).href} />
+<link rel="alternate" type="application/rss+xml" title={SITE.title[lang]} href={new URL(`${SITE.base}/rss.xml`, SITE.url).href} />

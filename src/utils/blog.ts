@@ -19,8 +19,17 @@ export function getReadingTime(content: string): number {
   return Math.max(1, Math.ceil(words / wordsPerMinute));
 }
 
+const localeMap: Record<Lang, string> = {
+  en: "en-US",
+  es: "es-ES",
+  de: "de-DE",
+  fr: "fr-FR",
+  ja: "ja-JP",
+  ko: "ko-KR",
+};
+
 export function formatDate(date: Date, lang: Lang): string {
-  return date.toLocaleDateString(lang === "zh" ? "zh-CN" : "en-US", {
+  return date.toLocaleDateString(localeMap[lang], {
     year: "numeric",
     month: "long",
     day: "numeric",

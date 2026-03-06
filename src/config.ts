@@ -2,27 +2,43 @@
 export const SITE = {
   title: {
     en: "Visafree144",
-    zh: "Visafree144",
+    es: "Visafree144",
+    de: "Visafree144",
+    fr: "Visafree144",
+    ja: "Visafree144",
+    ko: "Visafree144",
   },
   description: {
-    en: "Your site description here",
-    zh: "在这里填写网站描述",
+    en: "Your guide to China's 144-hour visa-free transit policy",
+    es: "Tu guía sobre la política de tránsito sin visa de 144 horas en China",
+    de: "Ihr Leitfaden zur 144-Stunden-visafreien Transitpolitik Chinas",
+    fr: "Votre guide sur la politique de transit sans visa de 144 heures en Chine",
+    ja: "中国の144時間ビザなしトランジット政策ガイド",
+    ko: "중국 144시간 무비자 환승 정책 가이드",
   },
   url: "https://eickegao.github.io/visafree144",
   base: "/visafree144",
-  defaultLang: "zh" as const,
-  supportedLangs: ["en", "zh"] as const,
+  defaultLang: "en" as const,
+  supportedLangs: ["en", "es", "de", "fr", "ja", "ko"] as const,
 
   // 个人信息
   author: {
     name: {
-      en: "Your Name",
-      zh: "你的名字",
+      en: "Visafree144",
+      es: "Visafree144",
+      de: "Visafree144",
+      fr: "Visafree144",
+      ja: "Visafree144",
+      ko: "Visafree144",
     },
     avatar: "/avatar.jpg",
     bio: {
-      en: "Your bio here.",
-      zh: "在这里填写个人简介。",
+      en: "Everything you need to know about China's 144-hour visa-free transit.",
+      es: "Todo lo que necesitas saber sobre el tránsito sin visa de 144 horas en China.",
+      de: "Alles, was Sie über den 144-Stunden-visafreien Transit in China wissen müssen.",
+      fr: "Tout ce que vous devez savoir sur le transit sans visa de 144 heures en Chine.",
+      ja: "中国の144時間ビザなしトランジットについて知っておくべきことすべて。",
+      ko: "중국 144시간 무비자 환승에 대해 알아야 할 모든 것.",
     },
   },
 
@@ -36,15 +52,35 @@ export const SITE = {
 
   // 导航菜单
   nav: {
-    zh: [
-      { text: "首页", href: "/" },
-      { text: "博客", href: "/blog/" },
-      { text: "关于", href: "/about/" },
-    ],
     en: [
-      { text: "Home", href: "/en/" },
-      { text: "Blog", href: "/en/blog/" },
-      { text: "About", href: "/en/about/" },
+      { text: "Home", href: "/" },
+      { text: "Blog", href: "/blog/" },
+      { text: "About", href: "/about/" },
+    ],
+    es: [
+      { text: "Inicio", href: "/" },
+      { text: "Blog", href: "/blog/" },
+      { text: "Acerca de", href: "/about/" },
+    ],
+    de: [
+      { text: "Startseite", href: "/" },
+      { text: "Blog", href: "/blog/" },
+      { text: "Über uns", href: "/about/" },
+    ],
+    fr: [
+      { text: "Accueil", href: "/" },
+      { text: "Blog", href: "/blog/" },
+      { text: "À propos", href: "/about/" },
+    ],
+    ja: [
+      { text: "ホーム", href: "/" },
+      { text: "ブログ", href: "/blog/" },
+      { text: "について", href: "/about/" },
+    ],
+    ko: [
+      { text: "홈", href: "/" },
+      { text: "블로그", href: "/blog/" },
+      { text: "소개", href: "/about/" },
     ],
   },
 

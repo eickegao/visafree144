@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ArticleCard from "../components/ArticleCard.astro";
-import { SITE } from "../config";
-import { t, getLocalizedPath } from "../i18n";
-import { getBlogPosts } from "../utils/blog";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { SITE } from "../../config";
+import { t, getLocalizedPath } from "../../i18n";
+import { getBlogPosts } from "../../utils/blog";
 
-const lang = "en";
+const lang = "de";
 const posts = await getBlogPosts(lang);
 const latestPosts = posts.slice(0, 5);
 ---
@@ -33,7 +33,7 @@ const latestPosts = posts.slice(0, 5);
         body={post.body}
       />
     ))}
-    {latestPosts.length === 0 && <p class="empty">No posts yet.</p>}
+    {latestPosts.length === 0 && <p class="empty">Noch keine Beiträge.</p>}
   </section>
 </BaseLayout>
 
@@ -44,7 +44,6 @@ const latestPosts = posts.slice(0, 5);
     border-bottom: 1px solid #e2e8f0;
     margin-bottom: 2rem;
   }
-
   .avatar {
     width: 120px;
     height: 120px;
@@ -53,29 +52,24 @@ const latestPosts = posts.slice(0, 5);
     margin-bottom: 1rem;
     border: 3px solid var(--primary);
   }
-
   h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }
-
   .bio {
     color: #64748b;
     max-width: 500px;
     margin: 0 auto;
   }
-
   .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.5rem;
   }
-
   .section-header h2 {
     font-size: 1.5rem;
   }
-
   .empty {
     color: #94a3b8;
     text-align: center;

@@ -4,10 +4,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ArticleCard from "../../../components/ArticleCard.astro";
 import { t, getLocalizedPath } from "../../../i18n";
 
-const lang = "en";
+const lang = "ko";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => data.lang === "en");
+  const posts = await getCollection("blog", ({ data }) => data.lang === "ko");
   const tags = new Set<string>();
   posts.forEach((post) => post.data.tags.forEach((tag) => tags.add(tag)));
 
@@ -42,11 +42,6 @@ const { tag, posts } = Astro.props;
 </BaseLayout>
 
 <style>
-  .back {
-    display: inline-block;
-    margin-bottom: 1.5rem;
-    color: #64748b;
-    font-size: 0.9rem;
-  }
+  .back { display: inline-block; margin-bottom: 1.5rem; color: #64748b; font-size: 0.9rem; }
   h1 { margin-bottom: 1rem; }
 </style>
