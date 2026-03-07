@@ -136,10 +136,16 @@ export function getLangPath(currentPath: string, currentLang: Lang, targetLang: 
   // Strip base prefix first
   const pathWithoutBase = currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath;
 
-  // Remove current lang prefix if not default
+  // Remove current lang prefix from path if not default
   let cleanPath = pathWithoutBase;
   if (currentLang !== SITE.defaultLang) {
     cleanPath = pathWithoutBase.replace(`/${currentLang}`, "") || "/";
+  }
+
+  // Replace language prefix in blog/tag slugs (e.g., en-xxx -> ja-xxx)
+  const slugLangPattern = new RegExp(`/(blog|tags)/${currentLang}-`);
+  if (slugLangPattern.test(cleanPath)) {
+    cleanPath = cleanPath.replace(slugLangPattern, `/$1/${targetLang}-`);
   }
 
   // Add target lang prefix if not default
