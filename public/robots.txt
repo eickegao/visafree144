@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eickegao.github.io/visafree144/sitemap-index.xml
+Sitemap: https://visafree144.com/sitemap-index.xml

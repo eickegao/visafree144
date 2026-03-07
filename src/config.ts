@@ -16,8 +16,8 @@ export const SITE = {
     ja: "中国の144時間ビザなしトランジット政策ガイド",
     ko: "중국 144시간 무비자 환승 정책 가이드",
   },
-  url: "https://eickegao.github.io/visafree144",
-  base: "/visafree144",
+  url: "https://visafree144.com",
+  base: "",
   defaultLang: "en" as const,
   supportedLangs: ["en", "es", "de", "fr", "ja", "ko"] as const,
 
