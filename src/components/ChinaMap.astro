@@ -1,7 +1,6 @@
 ---
 import type { Lang } from "../config";
 import { SITE } from "../config";
-import { getLocalizedPath } from "../i18n";
 import { cities } from "../data/cities";
 
 interface Props {
@@ -11,173 +10,180 @@ interface Props {
 const { lang } = Astro.props;
 const base = SITE.base || "";
 
-const mapLabels: Record<Lang, { title: string; explore: string; highlights: string }> = {
-  en: { title: "Explore China", explore: "Explore →", highlights: "Highlights" },
-  es: { title: "Explorar China", explore: "Explorar →", highlights: "Destacados" },
-  de: { title: "China entdecken", explore: "Entdecken →", highlights: "Highlights" },
-  fr: { title: "Explorer la Chine", explore: "Explorer →", highlights: "Points forts" },
-  ja: { title: "中国を探索", explore: "探索する →", highlights: "見どころ" },
-  ko: { title: "중국 탐험", explore: "탐험하기 →", highlights: "하이라이트" },
+const mapLabels: Record<Lang, string> = {
+  en: "Explore China",
+  es: "Explorar China",
+  de: "China entdecken",
+  fr: "Explorer la Chine",
+  ja: "中国を探索",
+  ko: "중국 탐험",
 };
 
-const labels = mapLabels[lang];
+const highlightLabel: Record<Lang, string> = {
+  en: "Highlights",
+  es: "Destacados",
+  de: "Highlights",
+  fr: "Points forts",
+  ja: "見どころ",
+  ko: "하이라이트",
+};
 
-// Serialize city data for client-side JS
+// Prepare city data for client-side use
 const cityData = cities.map(c => ({
   id: c.id,
-  x: c.x,
-  y: c.y,
   name: c.name[lang],
   description: c.description[lang],
   highlights: c.highlights[lang],
+  // Geographic coordinates [lng, lat]
+  coords: getCityCoords(c.id),
 }));
+
+function getCityCoords(id: string): [number, number] {
+  const coords: Record<string, [number, number]> = {
+    beijing: [116.41, 39.90],
+    shanghai: [121.47, 31.23],
+    guangzhou: [113.26, 23.13],
+    chengdu: [104.07, 30.57],
+    xian: [108.94, 34.26],
+    guilin: [110.29, 25.27],
+    hangzhou: [120.15, 30.27],
+    chongqing: [106.55, 29.56],
+    kunming: [102.83, 25.02],
+    harbin: [126.63, 45.75],
+    sanya: [109.51, 18.25],
+    nanjing: [118.80, 32.06],
+    suzhou: [120.62, 31.30],
+    lhasa: [91.11, 29.65],
+    xiamen: [118.09, 24.48],
+  };
+  return coords[id] || [116, 39];
+}
 ---
 
 <section class="china-map-section">
-  <h2>{labels.title}</h2>
-  <div class="map-container" id="map-container">
-    <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" id="china-map">
-      <!-- Simplified China outline -->
-      <path class="china-outline" d="
-        M 95,155 L 105,140 L 120,130 L 140,125 L 155,115 L 170,108
-        L 185,100 L 200,95 L 218,92 L 235,88 L 250,82
-        L 268,78 L 285,72 L 300,68 L 320,62 L 338,58
-        L 355,55 L 370,52 L 385,55 L 398,60 L 410,65
-        L 420,72 L 432,78 L 445,82 L 458,88 L 468,95
-        L 478,102 L 488,95 L 498,90 L 505,85 L 510,78
-        L 505,72 L 498,65 L 492,55 L 488,48 L 482,42
-        L 478,35 L 472,30 L 478,25 L 485,22 L 492,28
-        L 498,35 L 505,42 L 508,50 L 512,42 L 518,38
-        L 525,45 L 520,55 L 515,65 L 518,72 L 522,80
-        L 518,88 L 512,95 L 505,100 L 498,108 L 490,115
-        L 480,120 L 472,128 L 465,135 L 458,145 L 452,152
-        L 448,160 L 455,168 L 462,175 L 468,182 L 475,188
-        L 480,195 L 478,205 L 472,215 L 465,222 L 460,230
-        L 462,240 L 465,248 L 460,255 L 452,260 L 445,268
-        L 438,275 L 432,282 L 428,290 L 425,298 L 430,305
-        L 435,312 L 432,320 L 428,328 L 422,335 L 418,342
-        L 425,348 L 430,355 L 425,362 L 418,368 L 412,375
-        L 405,382 L 398,388 L 392,395 L 385,400 L 378,405
-        L 370,400 L 362,395 L 355,390 L 348,395 L 342,402
-        L 338,410 L 335,418 L 340,425 L 345,432 L 340,438
-        L 332,435 L 325,428 L 318,422 L 310,418 L 302,415
-        L 295,410 L 288,405 L 280,400 L 272,396 L 265,392
-        L 258,388 L 250,385 L 242,380 L 235,375 L 228,370
-        L 222,365 L 215,360 L 208,355 L 200,350 L 192,345
-        L 185,340 L 178,335 L 170,332 L 162,328 L 155,322
-        L 148,318 L 140,315 L 132,312 L 125,308 L 118,305
-        L 110,300 L 102,298 L 95,295 L 88,290 L 82,285
-        L 78,278 L 75,270 L 72,262 L 70,255 L 68,248
-        L 65,240 L 62,232 L 58,225 L 55,218 L 52,210
-        L 55,202 L 58,195 L 62,188 L 68,182 L 75,175
-        L 82,168 L 88,162 L 95,155 Z
-      " />
-
-      <!-- Hainan Island -->
-      <path class="china-outline" d="
-        M 330,405 L 338,408 L 345,415 L 348,425 L 345,435
-        L 338,440 L 330,438 L 325,430 L 322,420 L 325,412 Z
-      " />
-
-      <!-- Taiwan -->
-      <path class="china-outline china-outline-secondary" d="
-        M 455,305 L 460,310 L 462,320 L 460,330 L 455,338
-        L 450,332 L 448,322 L 450,312 Z
-      " />
-
-      <!-- City markers -->
-      {cities.map(city => (
-        <g class="city-marker" data-city={city.id}>
-          <circle
-            cx={city.x}
-            cy={city.y}
-            r="6"
-            class="city-dot"
-          />
-          <circle
-            cx={city.x}
-            cy={city.y}
-            r="10"
-            class="city-dot-hover"
-          />
-        </g>
-      ))}
-    </svg>
-
-    <!-- Tooltip -->
-    <div class="map-tooltip" id="map-tooltip">
-      <h3 id="tooltip-name"></h3>
-      <p id="tooltip-desc"></p>
-      <div class="tooltip-highlights">
-        <span class="tooltip-label">{labels.highlights}:</span>
-        <span id="tooltip-highlights"></span>
-      </div>
-      <span class="tooltip-link">{labels.explore}</span>
-    </div>
+  <h2>{mapLabels[lang]}</h2>
+  <div class="map-container">
+    <div id="china-map-chart"></div>
   </div>
 </section>
 
-<script define:vars={{ cityData, base }}>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('map-container');
-    const tooltip = document.getElementById('map-tooltip');
-    const tooltipName = document.getElementById('tooltip-name');
-    const tooltipDesc = document.getElementById('tooltip-desc');
-    const tooltipHighlights = document.getElementById('tooltip-highlights');
+<script define:vars={{ cityData, base, highlightLabel: highlightLabel[lang] }}>
+  async function initMap() {
+    const echarts = await import('echarts/core');
+    const { MapChart, ScatterChart, EffectScatterChart } = await import('echarts/charts');
+    const { TooltipComponent, GeoComponent, VisualMapComponent } = await import('echarts/components');
+    const { CanvasRenderer } = await import('echarts/renderers');
 
-    if (!container || !tooltip) return;
+    echarts.use([MapChart, ScatterChart, EffectScatterChart, TooltipComponent, GeoComponent, VisualMapComponent, CanvasRenderer]);
 
-    const cityMap = {};
-    cityData.forEach(c => { cityMap[c.id] = c; });
+    // Fetch GeoJSON
+    const res = await fetch(`${base}/china.json`);
+    const geoJson = await res.json();
+    echarts.registerMap('china', geoJson);
 
-    document.querySelectorAll('.city-marker').forEach(marker => {
-      const cityId = marker.getAttribute('data-city');
-      const city = cityMap[cityId];
-      if (!city) return;
+    const chartDom = document.getElementById('china-map-chart');
+    if (!chartDom) return;
 
-      marker.addEventListener('mouseenter', (e) => {
-        tooltipName.textContent = city.name;
-        tooltipDesc.textContent = city.description;
-        tooltipHighlights.textContent = city.highlights.join(' · ');
+    const chart = echarts.init(chartDom);
 
-        tooltip.classList.add('visible');
+    const scatterData = cityData.map(c => ({
+      name: c.name,
+      value: [...c.coords, c],
+    }));
 
-        // Position tooltip near the city dot
-        const svg = document.getElementById('china-map');
-        const rect = svg.getBoundingClientRect();
-        const svgWidth = rect.width;
-        const svgHeight = rect.height;
+    const option = {
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: 'rgba(255,255,255,0.95)',
+        borderColor: '#e2e8f0',
+        borderWidth: 1,
+        padding: [12, 16],
+        textStyle: { color: '#1a1a2e', fontSize: 13 },
+        formatter: function(params) {
+          if (!params.data || !params.data.value || !params.data.value[2]) return '';
+          const city = params.data.value[2];
+          const highlights = city.highlights.join(' · ');
+          return `<div style="min-width:200px">` +
+            `<div style="font-size:16px;font-weight:700;color:#2563eb;margin-bottom:6px">${city.name}</div>` +
+            `<div style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5">${city.description}</div>` +
+            `<div style="font-size:12px;color:#64748b"><span style="font-weight:600">${highlightLabel}:</span> ${highlights}</div>` +
+            `</div>`;
+        },
+      },
+      geo: {
+        map: 'china',
+        roam: true,
+        zoom: 1.2,
+        center: [104, 35],
+        scaleLimit: { min: 1, max: 8 },
+        itemStyle: {
+          areaColor: '#e8f4f8',
+          borderColor: '#b0d4e8',
+          borderWidth: 1,
+        },
+        emphasis: {
+          itemStyle: {
+            areaColor: '#d0e8f2',
+          },
+          label: { show: false },
+        },
+        regions: [
+          { name: '南海诸岛', itemStyle: { opacity: 0 }, label: { show: false } },
+        ],
+      },
+      series: [
+        {
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          data: scatterData,
+          symbolSize: 10,
+          showEffectOn: 'emphasis',
+          rippleEffect: {
+            brushType: 'stroke',
+            scale: 4,
+          },
+          itemStyle: {
+            color: '#2563eb',
+            shadowBlur: 10,
+            shadowColor: 'rgba(37,99,235,0.3)',
+          },
+          emphasis: {
+            itemStyle: {
+              color: '#f59e0b',
+            },
+            scale: true,
+          },
+          label: {
+            show: true,
+            formatter: '{b}',
+            position: 'right',
+            fontSize: 11,
+            color: '#334155',
+            distance: 5,
+          },
+          zlevel: 1,
+        },
+      ],
+    };
 
-        const xPct = city.x / 600;
-        const yPct = city.y / 500;
+    chart.setOption(option);
 
-        let left = rect.left + xPct * svgWidth + 15;
-        let top = rect.top + yPct * svgHeight - 20;
+    // Responsive
+    window.addEventListener('resize', () => chart.resize());
 
-        // Keep tooltip in viewport
-        const tooltipRect = tooltip.getBoundingClientRect();
-        if (left + tooltipRect.width > window.innerWidth - 10) {
-          left = rect.left + xPct * svgWidth - tooltipRect.width - 15;
-        }
-        if (top + tooltipRect.height > window.innerHeight - 10) {
-          top = window.innerHeight - tooltipRect.height - 10;
-        }
-        if (top < 10) top = 10;
-
-        tooltip.style.left = left + 'px';
-        tooltip.style.top = top + 'px';
-      });
-
-      marker.addEventListener('mouseleave', () => {
-        tooltip.classList.remove('visible');
-      });
-
-      marker.addEventListener('click', () => {
-        // Future: navigate to city detail page
-        // window.location.href = `${base}/destinations/${cityId}/`;
-      });
+    // Click event (future: navigate to city page)
+    chart.on('click', 'series', (params) => {
+      // const city = params.data.value[2];
+      // window.location.href = `${base}/destinations/${city.id}/`;
     });
-  });
+  }
+
+  // Init when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
 </script>
 
 <style>
@@ -192,104 +198,18 @@ const cityData = cities.map(c => ({
   }
 
   .map-container {
-    position: relative;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
-  #china-map {
+  #china-map-chart {
     width: 100%;
-    height: auto;
-  }
-
-  .china-outline {
-    fill: #e8f4f8;
-    stroke: var(--primary);
-    stroke-width: 1.5;
-    transition: fill 0.3s;
-  }
-
-  .china-outline-secondary {
-    fill: #eef6fa;
-    stroke: var(--primary);
-    stroke-width: 1;
-    stroke-dasharray: 4 2;
-  }
-
-  .city-dot {
-    fill: var(--primary);
-    stroke: white;
-    stroke-width: 2;
-    transition: all 0.2s;
-  }
-
-  .city-dot-hover {
-    fill: transparent;
-    stroke: transparent;
-    cursor: pointer;
-  }
-
-  .city-marker:hover .city-dot {
-    fill: var(--accent);
-    r: 8;
-    stroke-width: 2.5;
-  }
-
-  .city-marker {
-    cursor: pointer;
-  }
-
-  .map-tooltip {
-    position: fixed;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 1rem;
-    max-width: 280px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    z-index: 1000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-
-  .map-tooltip.visible {
-    opacity: 1;
-  }
-
-  .map-tooltip h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-    color: var(--primary);
-  }
-
-  .map-tooltip p {
-    font-size: 0.85rem;
-    color: #475569;
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-  }
-
-  .tooltip-highlights {
-    font-size: 0.8rem;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-  }
-
-  .tooltip-label {
-    font-weight: 600;
-  }
-
-  .tooltip-link {
-    font-size: 0.85rem;
-    color: var(--primary);
-    font-weight: 600;
+    height: 500px;
   }
 
   @media (max-width: 640px) {
-    .map-tooltip {
-      max-width: 220px;
-      padding: 0.75rem;
+    #china-map-chart {
+      height: 350px;
     }
   }
 </style>
