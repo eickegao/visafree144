@@ -28,16 +28,6 @@ const highlightLabel: Record<Lang, string> = {
   ko: "하이라이트",
 };
 
-// Prepare city data for client-side use
-const cityData = cities.map(c => ({
-  id: c.id,
-  name: c.name[lang],
-  description: c.description[lang],
-  highlights: c.highlights[lang],
-  // Geographic coordinates [lng, lat]
-  coords: getCityCoords(c.id),
-}));
-
 function getCityCoords(id: string): [number, number] {
   const coords: Record<string, [number, number]> = {
     beijing: [116.41, 39.90],
@@ -58,6 +48,14 @@ function getCityCoords(id: string): [number, number] {
   };
   return coords[id] || [116, 39];
 }
+
+const cityData = cities.map(c => ({
+  id: c.id,
+  name: c.name[lang],
+  description: c.description[lang],
+  highlights: c.highlights[lang],
+  coords: getCityCoords(c.id),
+}));
 ---
 
 <section class="china-map-section">
@@ -67,123 +65,106 @@ function getCityCoords(id: string): [number, number] {
   </div>
 </section>
 
-<script define:vars={{ cityData, base, highlightLabel: highlightLabel[lang] }}>
-  async function initMap() {
-    const echarts = await import('echarts/core');
-    const { MapChart, ScatterChart, EffectScatterChart } = await import('echarts/charts');
-    const { TooltipComponent, GeoComponent, VisualMapComponent } = await import('echarts/components');
-    const { CanvasRenderer } = await import('echarts/renderers');
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js" is:inline></script>
+<script define:vars={{ cityData, base, highlightLabel: highlightLabel[lang] }} is:inline>
+  (function() {
+    function initMap() {
+      if (typeof echarts === 'undefined') {
+        setTimeout(initMap, 100);
+        return;
+      }
 
-    echarts.use([MapChart, ScatterChart, EffectScatterChart, TooltipComponent, GeoComponent, VisualMapComponent, CanvasRenderer]);
+      var chartDom = document.getElementById('china-map-chart');
+      if (!chartDom) return;
 
-    // Fetch GeoJSON
-    const res = await fetch(`${base}/china.json`);
-    const geoJson = await res.json();
-    echarts.registerMap('china', geoJson);
+      fetch((base || '') + '/china.json')
+        .then(function(res) { return res.json(); })
+        .then(function(geoJson) {
+          echarts.registerMap('china', geoJson);
 
-    const chartDom = document.getElementById('china-map-chart');
-    if (!chartDom) return;
+          var chart = echarts.init(chartDom);
 
-    const chart = echarts.init(chartDom);
+          var scatterData = cityData.map(function(c) {
+            return { name: c.name, value: [c.coords[0], c.coords[1], c] };
+          });
 
-    const scatterData = cityData.map(c => ({
-      name: c.name,
-      value: [...c.coords, c],
-    }));
-
-    const option = {
-      tooltip: {
-        trigger: 'item',
-        backgroundColor: 'rgba(255,255,255,0.95)',
-        borderColor: '#e2e8f0',
-        borderWidth: 1,
-        padding: [12, 16],
-        textStyle: { color: '#1a1a2e', fontSize: 13 },
-        formatter: function(params) {
-          if (!params.data || !params.data.value || !params.data.value[2]) return '';
-          const city = params.data.value[2];
-          const highlights = city.highlights.join(' · ');
-          return `<div style="min-width:200px">` +
-            `<div style="font-size:16px;font-weight:700;color:#2563eb;margin-bottom:6px">${city.name}</div>` +
-            `<div style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5">${city.description}</div>` +
-            `<div style="font-size:12px;color:#64748b"><span style="font-weight:600">${highlightLabel}:</span> ${highlights}</div>` +
-            `</div>`;
-        },
-      },
-      geo: {
-        map: 'china',
-        roam: true,
-        zoom: 1.2,
-        center: [104, 35],
-        scaleLimit: { min: 1, max: 8 },
-        itemStyle: {
-          areaColor: '#e8f4f8',
-          borderColor: '#b0d4e8',
-          borderWidth: 1,
-        },
-        emphasis: {
-          itemStyle: {
-            areaColor: '#d0e8f2',
-          },
-          label: { show: false },
-        },
-        regions: [
-          { name: '南海诸岛', itemStyle: { opacity: 0 }, label: { show: false } },
-        ],
-      },
-      series: [
-        {
-          type: 'effectScatter',
-          coordinateSystem: 'geo',
-          data: scatterData,
-          symbolSize: 10,
-          showEffectOn: 'emphasis',
-          rippleEffect: {
-            brushType: 'stroke',
-            scale: 4,
-          },
-          itemStyle: {
-            color: '#2563eb',
-            shadowBlur: 10,
-            shadowColor: 'rgba(37,99,235,0.3)',
-          },
-          emphasis: {
-            itemStyle: {
-              color: '#f59e0b',
+          var option = {
+            tooltip: {
+              trigger: 'item',
+              backgroundColor: 'rgba(255,255,255,0.96)',
+              borderColor: '#e2e8f0',
+              borderWidth: 1,
+              padding: [12, 16],
+              textStyle: { color: '#1a1a2e', fontSize: 13 },
+              formatter: function(params) {
+                if (!params.data || !params.data.value || !params.data.value[2]) return '';
+                var city = params.data.value[2];
+                var highlights = city.highlights.join(' · ');
+                return '<div style="min-width:200px">' +
+                  '<div style="font-size:16px;font-weight:700;color:#2563eb;margin-bottom:6px">' + city.name + '</div>' +
+                  '<div style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5">' + city.description + '</div>' +
+                  '<div style="font-size:12px;color:#64748b"><span style="font-weight:600">' + highlightLabel + ':</span> ' + highlights + '</div>' +
+                  '</div>';
+              },
             },
-            scale: true,
-          },
-          label: {
-            show: true,
-            formatter: '{b}',
-            position: 'right',
-            fontSize: 11,
-            color: '#334155',
-            distance: 5,
-          },
-          zlevel: 1,
-        },
-      ],
-    };
+            geo: {
+              map: 'china',
+              roam: true,
+              zoom: 1.2,
+              center: [104, 35],
+              scaleLimit: { min: 1, max: 8 },
+              itemStyle: {
+                areaColor: '#e8f4f8',
+                borderColor: '#b0d4e8',
+                borderWidth: 1,
+              },
+              emphasis: {
+                itemStyle: { areaColor: '#d0e8f2' },
+                label: { show: false },
+              },
+              regions: [
+                { name: '南海诸岛', itemStyle: { opacity: 0 }, label: { show: false } },
+              ],
+            },
+            series: [{
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              data: scatterData,
+              symbolSize: 10,
+              showEffectOn: 'emphasis',
+              rippleEffect: { brushType: 'stroke', scale: 4 },
+              itemStyle: {
+                color: '#2563eb',
+                shadowBlur: 10,
+                shadowColor: 'rgba(37,99,235,0.3)',
+              },
+              emphasis: {
+                itemStyle: { color: '#f59e0b' },
+                scale: true,
+              },
+              label: {
+                show: true,
+                formatter: '{b}',
+                position: 'right',
+                fontSize: 11,
+                color: '#334155',
+                distance: 5,
+              },
+              zlevel: 1,
+            }],
+          };
 
-    chart.setOption(option);
+          chart.setOption(option);
+          window.addEventListener('resize', function() { chart.resize(); });
+        });
+    }
 
-    // Responsive
-    window.addEventListener('resize', () => chart.resize());
-
-    // Click event (future: navigate to city page)
-    chart.on('click', 'series', (params) => {
-      // const city = params.data.value[2];
-      // window.location.href = `${base}/destinations/${city.id}/`;
-    });
-  }
-
-  // Init when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMap);
-  } else {
-    initMap();
-  }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMap);
+    } else {
+      initMap();
+    }
+  })();
 </script>
 
 <style>
