@@ -12,12 +12,6 @@ const latestPosts = posts.slice(0, 5);
 ---
 
 <BaseLayout title={t(lang, "nav.home")} lang={lang}>
-  <section class="hero">
-    <img src={`${SITE.base}${SITE.author.avatar}`} alt={SITE.author.name[lang]} class="avatar" onerror="this.style.display='none'" />
-    <h1>{SITE.author.name[lang]}</h1>
-    <p class="bio">{SITE.author.bio[lang]}</p>
-  </section>
-
   <ChinaMap lang={lang} />
 
   <section class="latest">
