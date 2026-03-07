@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ArticleCard from "../components/ArticleCard.astro";
+import ChinaMap from "../components/ChinaMap.astro";
 import { SITE } from "../config";
 import { t, getLocalizedPath } from "../i18n";
 import { getBlogPosts } from "../utils/blog";
@@ -16,6 +17,8 @@ const latestPosts = posts.slice(0, 5);
     <h1>{SITE.author.name[lang]}</h1>
     <p class="bio">{SITE.author.bio[lang]}</p>
   </section>
+
+  <ChinaMap lang={lang} />
 
   <section class="latest">
     <div class="section-header">
