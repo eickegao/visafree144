@@ -2,6 +2,7 @@
 import type { Lang } from "../config";
 import { SITE } from "../config";
 import { cities } from "../data/cities";
+import { provinceNames } from "../data/provinces";
 
 interface Props {
   lang: Lang;
@@ -65,7 +66,7 @@ const cityData = cities.map(c => ({
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js" is:inline></script>
-<script define:vars={{ cityData, base, highlightLabel: highlightLabel[lang] }} is:inline>
+<script define:vars={{ cityData, base, highlightLabel: highlightLabel[lang], nameMap: provinceNames[lang] }} is:inline>
   (function() {
     function initMap() {
       if (typeof echarts === 'undefined') {
@@ -111,6 +112,7 @@ const cityData = cities.map(c => ({
               roam: true,
               zoom: 1.2,
               center: [104, 35],
+              nameMap: nameMap,
               scaleLimit: { min: 1, max: 8 },
               itemStyle: {
                 areaColor: '#e8f4f8',
@@ -119,7 +121,7 @@ const cityData = cities.map(c => ({
               },
               emphasis: {
                 itemStyle: { areaColor: '#d0e8f2' },
-                label: { show: false },
+                label: { show: true },
               },
               regions: [
                 { name: '南海诸岛', itemStyle: { opacity: 0 }, label: { show: false } },
